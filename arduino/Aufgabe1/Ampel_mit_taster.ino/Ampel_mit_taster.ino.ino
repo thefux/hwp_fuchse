@@ -45,7 +45,7 @@ void setup()
   // LCD has 4 lines with 20 chars
   /*
    * Aufgabe 4
-   * sollte die nächsten zwei Zeilen reichen, um die Aufgabe 
+   * sollten die nächsten zwei Zeilen reichen, um die Aufgabe 
    * zu lösen.
    */
   lcd.begin(20, 4); 
@@ -61,7 +61,7 @@ void loop()
 {
 
   /*
-   * Analog Wert wir in dieser Schritt in der Variable
+   * Analog Wert wird in diesem Schritt in der Variable
    * analogValue gespeichert.
    */
   analogValue = analogRead(A0);
@@ -70,7 +70,7 @@ void loop()
    * Aufgabe 5
    * cursor wird aud Null initialisiert also erste Postion.
    * erste Position heisst: Zeile 0 und Spalte "0 bis 20"
-   * und die eingelesene analog Wert am ende auszudrücken.
+   * um den eingelesenen analog Wert am ende auszudrücken.
    */
   lcd.setCursor(0, 0);
   lcd.print("Analog 0: ");
@@ -79,13 +79,13 @@ void loop()
 
   /*
    * Aufgabe 6
-   * springen einer neuer Zeile über dem LCD, 
-   * und schreiben den Wert, der der Button zurückgibt.
+   * springen in eine neue Zeile über dem LCD, 
+   * und schreibe den Wert, den der Button zurückgibt.
    */
   lcd.setCursor(0, 1);
   lcd.print("BUTTON: ");
   /*
-   * wenn man keine der Knöpfe drückt
+   * wenn man keinen der Knöpfe drückt
    * wird immer ein "*" im display ausgegeben.
    * auf dem Board sind die Buttons durch S* bezeichnet.
    */
@@ -107,7 +107,7 @@ void loop()
    /*
     * Aufgabe 7 und Aufganbe 9 
     * wir haben hier versucht alle Aufgabe in dem Display zu zeigen.
-    * also auf die 3te Zeile(vorletzte) des LCDs werden die Ampelzustände gezeigt.
+    * also auf die 3. Zeile(vorletzte) des LCDs werden die Ampelzustände gezeigt.
     * 
     */
    lcd.setCursor(0, 2);
@@ -156,7 +156,7 @@ void loop()
 } 
   /* Aufgabe 8
    *  hier wird der Ampelzustand "rot" nur dann verlassen und 
-   *  das Programm  weiter laufen kann, wenn
+   *  das Programm  weiter laufen, wenn
    *  die Taste "S1" gedrückt wird. 
    *  
   if (analogValue > 850) {
