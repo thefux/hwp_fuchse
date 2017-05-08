@@ -70,7 +70,6 @@ void loop()
     lcd.print("S1");
   else
     lcd.print(" * ");
-    */
 
 
 
