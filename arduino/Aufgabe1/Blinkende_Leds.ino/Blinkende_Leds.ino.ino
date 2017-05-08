@@ -1,11 +1,29 @@
-// LED - test : Blinking with 1Hz frequency
-// LED is connected to Pin 10
-// global variables
+/* authors:
+*
+*
+*  Abderrahmen Rakez
+*  Ferdinand Biermann
+*  Tilman Rosenlicht
+*  Tobias Schaetzle
+*
+*
+*
+*/
+
+
+
+/* LED - test : Blinking with 1Hz frequency
+* LED is connected to Pin 10
+* global variables
+*/
+
 bool led_check = true;
 int ledPin1 = 10;
 int ledPin2 = 11;
 
-// initialization
+/*
+* initialization
+*/
 void setup(){
   // set ledPin as output
   pinMode(ledPin1, OUTPUT);
@@ -16,7 +34,10 @@ void setup(){
 void loop(){
 
  /* Aufgabe 1
-  *  enable the LED
+  * enable the LED
+  */ 
+ 
+ /* 
    digitalWrite(ledPin, HIGH);
    wait for 500ms
    delay(1000);
@@ -24,7 +45,7 @@ void loop(){
    digitalWrite(ledPin, LOW);
    wait for 500ms
    delay(1000);
-  */
+   */
   
 
   /*

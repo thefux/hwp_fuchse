@@ -1,5 +1,20 @@
-// locale variable als macro's
-// entsprechend die PINs Nummer
+/* authors:
+*
+*
+*  Abderrahmen Rakez
+*  Ferdinand Biermann
+*  Tilman Rosenlicht
+*  Tobias Schaetzle
+*
+*
+*
+*/
+
+
+
+/* locale variable als macro's
+*  entsprechend die PINs Nummer
+*/
 #define ledPin_red 12
 #define ledPin_yellow 11
 #define ledPin_green 10 

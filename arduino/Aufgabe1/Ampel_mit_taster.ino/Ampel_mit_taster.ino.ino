@@ -1,4 +1,21 @@
-// display test: write some data to the lcd
+/* authors:
+*
+*
+*  Abderrahmen Rakez
+*  Ferdinand Biermann
+*  Tilman Rosenlicht
+*  Tobias Schaetzle
+*
+*
+*
+*/
+
+
+
+/*
+*
+*  display test: write some data to the lcd
+*/
 
 /* Connections:
  R/S : Pin 3
