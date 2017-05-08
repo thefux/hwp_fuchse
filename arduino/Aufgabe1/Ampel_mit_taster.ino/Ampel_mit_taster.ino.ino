@@ -9,6 +9,7 @@
  DB6 : Pin 8
  DB7 : Pin 9
 */
+#define ton 13
 #define ledPin_red 12
 #define ledPin_yellow 11
 #define ledPin_green 10 
@@ -25,6 +26,11 @@ void setup()
 {
   Serial.begin(9600);
   // LCD has 4 lines with 20 chars
+  /*
+   * Aufgabe 4
+   * sollte die nächsten zwei Zeilen reichen, um die Aufgabe 
+   * zu lösen.
+   */
   lcd.begin(20, 4); 
   lcd.print("system ready");
 
@@ -36,46 +42,67 @@ void setup()
 
 void loop()
 {
+
+  /*
+   * Analog Wert wir in dieser Schritt in der Variable
+   * analogValue gespeichert.
+   */
   analogValue = analogRead(A0);
 
   /*
-  // Aufgabe 5
-  // cursor wird aud Null initialisiert also nulte Postion.
-  // und die eingelesene analog Wert am ende ausgedruckt.
+   * Aufgabe 5
+   * cursor wird aud Null initialisiert also erste Postion.
+   * erste Position heisst: Zeile 0 und Spalte "0 bis 20"
+   * und die eingelesene analog Wert am ende auszudrücken.
+   */
   lcd.setCursor(0, 0);
   lcd.print("Analog 0: ");
   lcd.print(analogValue);  
-   */
+  
 
-  // Aufgabe 6
-  // springen einer neuer Zeile des LCD.
+  /*
+   * Aufgabe 6
+   * springen einer neuer Zeile über dem LCD, 
+   * und schreiben den Wert, der der Button zurückgibt.
+   */
   lcd.setCursor(0, 1);
   lcd.print("BUTTON: ");
-  // lcd.print(analogValue);
-  // wenn man den Knopf nicht drückt
-  // wird immer ein "*" im display gezeichet.
-  // auf dem Board sind die Buttons durch S* bezeichnet.
-  
-  if (analogValue > 850) {
+  /*
+   * wenn man keine der Knöpfe drückt
+   * wird immer ein "*" im display ausgegeben.
+   * auf dem Board sind die Buttons durch S* bezeichnet.
+   */
+    if (analogValue > 850)
     lcd.print(" * "); 
-  } else if (analogValue > 700) {
+  else if (analogValue > 700)
     lcd.print("S5");
-  } else if (analogValue > 600) {
+  else if (analogValue > 600)
     lcd.print("S4");
-  } else if (analogValue > 350) {
-
+  else if (analogValue > 350)
     lcd.print("S3");
-  } else if (analogValue > 150) {
+  else if (analogValue > 150)
     lcd.print("S2");
-  } else if (analogValue >= 0) {
+  else if (analogValue >= 0)
     lcd.print("S1");
-  } else
+  else
     lcd.print(" * ");
 
-}
-   /*  Aufagabe 7
-   lcd.setCursor(0, 3);
-   digitalWrite(ledPin_red, HIGH);
+   /*
+    * Aufgabe 7 und Aufganbe 9 
+    * wir haben hier versucht alle Aufgabe in dem Display zu zeigen.
+    * also auf die 3te Zeile(vorletzte) des LCDs werden die Ampelzustände gezeigt.
+    * 
+    */
+   lcd.setCursor(0, 2);
+   digitalWrite(ledPin_red, HIGH); 
+   
+   
+    /*
+    * Ton Ausgabe red LED mot 100 Hz.
+    */
+   tone(13, 100, 4000);
+   
+   
    lcd.print("red");
    delay(4000);
    lcd.clear();
@@ -88,6 +115,14 @@ void loop()
    lcd.clear();   
    lcd.setCursor(0, 3); 
    digitalWrite(ledPin_green, HIGH);
+   
+   
+   /*
+    * Ton Ausgabe für green LED mit 400 Hz.
+    */
+   tone(13, 400, 3000);
+   
+   
    lcd.print("green");
    delay(3000);
    digitalWrite(ledPin_green, LOW);
@@ -100,9 +135,13 @@ void loop()
    lcd.clear(); 
   // wait for 100 ms (reduces display flickering)
   delay(100);
-  */ 
-  
+ 
+} 
   /* Aufgabe 8
+   *  hier wird der Ampelzustand "rot" nur dann verlassen und 
+   *  das Programm  weiter laufen kann, wenn
+   *  die Taste "S1" gedrückt wird. 
+   *  
   if (analogValue > 850) {
     lcd.print(" * "); 
     digitalWrite(ledPin_red, HIGH);
@@ -113,7 +152,6 @@ void loop()
     lcd.print("S4");
     digitalWrite(ledPin_red, HIGH);
   } else if (analogValue > 350) {
-
     lcd.print("S3");
     digitalWrite(ledPin_red, HIGH);
   } else if (analogValue > 150) {
@@ -122,19 +160,18 @@ void loop()
   } else if (analogValue >= 0) {
     lcd.print("S1");
     digitalWrite(ledPin_yellow, HIGH);
-   delay(1000);
-   digitalWrite(ledPin_red, LOW);
-   digitalWrite(ledPin_yellow, LOW);
-   digitalWrite(ledPin_green, HIGH);
-   delay(3000);
-   digitalWrite(ledPin_green, LOW);
-   digitalWrite(ledPin_yellow, HIGH);
-   delay(1000);   
-   digitalWrite(ledPin_yellow, LOW);
+    delay(1000);
+    digitalWrite(ledPin_red, LOW);
+    digitalWrite(ledPin_yellow, LOW);
+    digitalWrite(ledPin_green, HIGH);
+    delay(3000);
+    digitalWrite(ledPin_green, LOW);
+    digitalWrite(ledPin_yellow, HIGH);
+    delay(1000);   
+    digitalWrite(ledPin_yellow, LOW);
   } else
     lcd.print(" * ");
   */
-}
 
 
 /* Usefull LCD functions:

@@ -1,7 +1,6 @@
 // LED - test : Blinking with 1Hz frequency
 // LED is connected to Pin 10
 // global variables
-// int ledPin = 10;
 bool led_check = true;
 int ledPin1 = 10;
 int ledPin2 = 11;
@@ -16,17 +15,23 @@ void setup(){
 
 void loop(){
 
- /* enable the LED
+ /* Aufgabe 1
+  *  enable the LED
    digitalWrite(ledPin, HIGH);
    wait for 500ms
-   delay(500);
+   delay(1000);
    disable the LED
    digitalWrite(ledPin, LOW);
    wait for 500ms
-   delay(500);
+   delay(1000);
   */
   
-  
+
+  /*
+   * Aufgabe 2
+   * hier haben wir eine variable deklariert, die das ermöglicht 
+   * die zwei LEDs abweichend blinken.
+   */
   if (led_check) {
     digitalWrite(ledPin1, HIGH);
     delay(1000);

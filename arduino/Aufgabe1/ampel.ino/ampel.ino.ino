@@ -1,9 +1,13 @@
+// locale variable als macro's
+// entsprechend die PINs Nummer
 #define ledPin_red 12
 #define ledPin_yellow 11
 #define ledPin_green 10 
 
 void setup() {
-  // put your setup code here, to run once:
+  /*
+   * die PINs werden auf output PINs gesetzt.
+   */
   pinMode(ledPin_red, OUTPUT);
   pinMode(ledPin_yellow, OUTPUT);
   pinMode(ledPin_green, OUTPUT);
@@ -11,7 +15,11 @@ void setup() {
 }
 
 void loop() {
-/* Aufgabe 3 */
+   /*
+    * Aufgabe 3
+    * die LEDs werden zeitlich gesteuert,
+    * wie in der Abbildung in der Aufgabe 3 zu sehen ist.
+    */
    digitalWrite(ledPin_red, HIGH);
    delay(4000);
    digitalWrite(ledPin_yellow, HIGH);
