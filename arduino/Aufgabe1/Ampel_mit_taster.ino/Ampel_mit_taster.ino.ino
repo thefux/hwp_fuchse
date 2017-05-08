@@ -48,33 +48,32 @@ void loop()
    */
 
   // Aufgabe 6
-  // springen einer neuer Zeile.
+  // springen einer neuer Zeile des LCD.
   lcd.setCursor(0, 1);
   lcd.print("BUTTON: ");
   // lcd.print(analogValue);
-
   // wenn man den Knopf nicht drückt
   // wird immer ein "*" im display gezeichet.
   // auf dem Board sind die Buttons durch S* bezeichnet.
-  if (analogValue > 850)
+  
+  if (analogValue > 850) {
     lcd.print(" * "); 
-  else if (analogValue > 700)
-    lcd.print("S5");()
-  else if (analogValue > 600)
+  } else if (analogValue > 700) {
+    lcd.print("S5");
+  } else if (analogValue > 600) {
     lcd.print("S4");
-  else if (analogValue > 350)
+  } else if (analogValue > 350) {
+
     lcd.print("S3");
-  else if (analogValue > 150)
+  } else if (analogValue > 150) {
     lcd.print("S2");
-  else if (analogValue >= 0)
+  } else if (analogValue >= 0) {
     lcd.print("S1");
-  else
+  } else
     lcd.print(" * ");
 
-
-
-
-    
+}
+   /*  Aufagabe 7
    lcd.setCursor(0, 3);
    digitalWrite(ledPin_red, HIGH);
    lcd.print("red");
@@ -99,9 +98,42 @@ void loop()
    delay(1000);
    digitalWrite(ledPin_yellow, LOW);
    lcd.clear(); 
-    
   // wait for 100 ms (reduces display flickering)
   delay(100);
+  */ 
+  
+  /* Aufgabe 8
+  if (analogValue > 850) {
+    lcd.print(" * "); 
+    digitalWrite(ledPin_red, HIGH);
+  } else if (analogValue > 700) {
+    lcd.print("S5");
+     digitalWrite(ledPin_red, HIGH);
+  } else if (analogValue > 600) {
+    lcd.print("S4");
+    digitalWrite(ledPin_red, HIGH);
+  } else if (analogValue > 350) {
+
+    lcd.print("S3");
+    digitalWrite(ledPin_red, HIGH);
+  } else if (analogValue > 150) {
+    lcd.print("S2");
+    digitalWrite(ledPin_red, HIGH);
+  } else if (analogValue >= 0) {
+    lcd.print("S1");
+    digitalWrite(ledPin_yellow, HIGH);
+   delay(1000);
+   digitalWrite(ledPin_red, LOW);
+   digitalWrite(ledPin_yellow, LOW);
+   digitalWrite(ledPin_green, HIGH);
+   delay(3000);
+   digitalWrite(ledPin_green, LOW);
+   digitalWrite(ledPin_yellow, HIGH);
+   delay(1000);   
+   digitalWrite(ledPin_yellow, LOW);
+  } else
+    lcd.print(" * ");
+  */
 }
 
 
