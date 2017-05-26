@@ -1,8 +1,44 @@
 void setup() {
   Serial.begin(9600);
   pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+
   
-  /*
+  time_measure();
+  timer2();
+}
+
+void loop() {
+    
+}
+void timer2() {
+  
+  // disable interrupts
+  cli();
+  
+  // reset control registers
+  TCCR2A = 0;     
+  TCCR2B = 0;    
+  
+  // set clock prescaler: 256
+  TCCR2B |= (1 << CS22);
+  TCCR2B |= (1 << CS20);
+  
+  // set mode (CTC)
+  TCCR2A |= (1 << WGM21);
+        
+  // set the output compare register (maximum value for now)
+  OCR2A = 255;
+  
+  // enable interrupt
+  TIMSK2 |= (1 << OCIE2A);
+    
+  sei();  
+}
+
+// Aufabe 4
+void timer2(void) {
+  
   // disable all interrupts
   cli();
   
@@ -16,22 +52,16 @@ void setup() {
   TCCR2A |= (1 << WGM21);
     
   // set output compare register A
-  OCR2A = 156;
+  OCR2A = 255;
     
   // enable interrupt
   TIMSK2 |= (1 << OCIE2A);    
   
   // eable all interrupts
   sei();
-  */
-
-  time_measure();
+  
 }
-
-void loop() {
-    
-}
-
+// Aufgabe 1
 void setPin12(boolean high){
   if (high) {
     PORTB |= (1 << 4);
@@ -41,21 +71,23 @@ void setPin12(boolean high){
   }
 }
 
+
+// Aufgabe 2
 void setPin12Asm(boolean high){
   if (high) {
     asm volatile (
-    "start:"
     "sbi %0, %1\n\t" // 2 clocks
     :: "I" (_SFR_IO_ADDR(PORTB)), "I" (PORTB4));
   }
   else {
     asm volatile (
-    "start:"
     "cbi %0, %1\n\t" // 2 clocks
     :: "I" (_SFR_IO_ADDR(PORTB)), "I" (PORTB4));
   }
  
 }
+
+// Aufgabe 3
 void time_measure(void) {
   
   
