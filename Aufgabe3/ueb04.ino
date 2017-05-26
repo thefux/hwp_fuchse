@@ -55,21 +55,46 @@ void setPin12Asm(boolean high){
     asm volatile (
     "start:"
     "sbi %0, %1\n\t" // 2 clocks
-    "cbi %0, %1\n\t" // 2 clocks
-    "rjmp start\n\t" // 2 clocks
     :: "I" (_SFR_IO_ADDR(PORTB)), "I" (PORTB4));
   }
   else {
     asm volatile (
     "start:"
-    "sbi %0, %1\n\t" // 2 clocks
     "cbi %0, %1\n\t" // 2 clocks
-    "rjmp start\n\t" // 2 clocks
-    :: "O" (_SFR_IO_ADDR(PORTB)), "O" (PORTB4));
+    :: "I" (_SFR_IO_ADDR(PORTB)), "I" (PORTB4));
   }
  
 }
-
+void time_measure(void) {
+  
+  
+  uint8_t tStart = millis();
+  uint8_t tPinFunction = 0;
+  
+  for (int i = 0; i != 10000; i++) {
+    setPin12(true);
+    setPin12(false);
+    // ownToggleAsm_off();
+  }
+  tPintFunction = millis() - tStart;
+  
+  uint8_t tAsmFunction = 0;
+  
+  for (int i = 0; i != 10000; i++) {
+    setPin12Asm(true);
+    setPin12Asm(false);
+  }
+  
+  Serial.println("setPin12 function");
+  Serial.print("measured time ");
+  Serail.println(tPinFunction);
+  
+  Serial.println("setPin12Asm function");
+  Serial.print("measured time ");
+  Serail.println(tAsmFunction);
+  
+  
+}
 
 
 
