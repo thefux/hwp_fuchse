@@ -25,7 +25,7 @@ void setup() {
   
   Serial.begin(9600);         // begin serial connection
   time_measure();     // die ergebnisse der time_measure function werden
-                                      // in dem "Serieller Monitor" gedrückt
+                                      // in dem "Serieller Monitor" gedrÃ¼ckt
 
   pinMode(13, OUTPUT);        // Pin setzen
   pinMode(12, OUTPUT);
@@ -86,7 +86,7 @@ void time_measure(void) {
     setPin12(false);
   }
   
-  tDif_non_asm = millis() - tStart;     // Zeit Ausgabe für die NON_ASM Funktion
+  tDif_non_asm = millis() - tStart;     // Zeit Ausgabe fÃ¼r die NON_ASM Funktion
   
   
   uint32_t tDif_asm = 0;
@@ -95,7 +95,7 @@ void time_measure(void) {
     setPin12Asm(false);
   }
 
-  tDif_asm = millis() - tStart;       // Zeit Ausgabe für die ASM Funktion
+  tDif_asm = millis() - tStart;       // Zeit Ausgabe fÃ¼r die ASM Funktion
   
   
   Serial.println("time needed");

@@ -44,7 +44,7 @@ void loop() {
 
 /*
  * Aufgabe 5:     OCR2A: entpricht "timer2 output compare register A"  
- *                und mit seinem Wert die freqienz kontrollieren können
+ *                und mit seinem Wert die freqienz kontrollieren kÃ¶nnen
  *                hier benutzen wir folgende Formel
  *             
  *                clock_frequenz des boards / ( OCR2A_WERT * 256) = freq
@@ -66,7 +66,7 @@ void set_timer_freq(int freq){
     tmp = var / (freq * 255);
 
     
-    if (tmp > 255) {              // Werte größer als 255, werden kein Sinn machen.
+    if (tmp > 255) {              // Werte grÃ¶ÃŸer als 255, werden kein Sinn machen.
       return 0;
     } else {
       OCR2A = tmp;
@@ -105,7 +105,7 @@ void set_timer_freq(void){
 /*
  * Aufgabe 6: ISR:  Wenn tCount >= sCount wird index inkrementiert und sCount = tCount + durationr[index]
  *            Beachten Sie dabei, dass index maximal den Wert 9 haben darf bevor er wieder auf 0 gesetzt
- *            werden muss. Toggeln Sie außerdem Pin 11 jedes mal wenn sich der index ändert
+ *            werden muss. Toggeln Sie auÃŸerdem Pin 11 jedes mal wenn sich der index Ã¤ndert
  */
 ISR(TIMER1_COMPA_vect) {
 
