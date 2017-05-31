@@ -1,19 +1,49 @@
+/* authors:
+*
+*
+*  Abderrahmen Rakez
+*  Ferdinand Biermann
+*  Tilman Rosenlicht
+*  Tobias Schaetzle
+*
+*
+*
+*/
+
+// local variable
 
 uint8_t counter = 0;
 uint8_t start = 0;
 uint8_t finish = 0;
+
+
+/*
+ * setup function
+ */
 void setup() {
+
   
+  Serial.begin(9600);         // begin serial connection
+  time_measure();     // die ergebnisse der time_measure function werden
+                                      // in dem "Serieller Monitor" gedrückt
+
+  pinMode(13, OUTPUT);        // Pin setzen
   pinMode(12, OUTPUT);
   
 }
 
+
+/*
+ * loop function
+ */
 void loop() {
-    
-  set_timer_freq(247);
-  
+      
 }
 
+/*
+ * Aufgabe 1: Mittels setPin12 function wird direkt in das 
+ * ensprechende Register geschrieben.
+ */
 void setPin12(boolean high){
   if (high) {
     PORTB |= (1 << 4);
@@ -23,6 +53,10 @@ void setPin12(boolean high){
   }
 }
 
+
+/*
+ * Aufgabe 2: Die Aufgabe 1 wird in Assembly Code umgeschrieben
+ */
 void setPin12Asm(boolean high){
   if (high) {
     asm volatile (
@@ -37,25 +71,38 @@ void setPin12Asm(boolean high){
  
 }
 
+/*
+ * Aufgabe 3: Verglecihen welche der Funktionen ist schneller 
+ * Die Ergebnisse zeogen, dass die ASM Funktion schneller als die NON_ASM
+ */
+void time_measure(void) {
+  
+  
+  uint32_t tStart = millis();         // start Zeit
 
+  uint32_t tDif_non_asm = 0;
+  for (int i = 0; i != 100000; i++) {
+    setPin12(true);
+    setPin12(false);
+  }
+  
+  tDif_non_asm = millis() - tStart;     // Zeit Ausgabe für die NON_ASM Funktion
+  
+  
+  uint32_t tDif_asm = 0;
+  for (int i = 0; i != 100000; i++) {
+    setPin12Asm(true);
+    setPin12Asm(false);
+  }
 
-void set_timer_freq(int freq){
-    cli();
-    TCCR2A = 0;
-    TCCR2B = 0;
-    TCCR2B |= (1 << CS22);
-    TCCR2B |= (1 << CS20);
-    TCCR2A |= (1 << WGM21);
-    OCR2A = 625000/(freq*2);
-    TIMSK2 |= (1 << OCIE2A);
-    sei();
-     
+  tDif_asm = millis() - tStart;       // Zeit Ausgabe für die ASM Funktion
+  
+  
+  Serial.println("time needed");
+  Serial.print("setPin12 function : ");
+  Serial.println(tDif_non_asm);
+
+  Serial.print("setPin12Asm function : ");
+  Serial.println(tDif_asm);
 }
-
-ISR(TIMER2_COMPA_vect) {
-  // toggle pin
-  PINB ^= (1 << 4);
-}
-
-
 
