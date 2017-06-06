@@ -1,0 +1,33 @@
+|fulladder2bit
+sum0 <= fulladder:inst.sum
+carryIN => fulladder:inst.carry
+A0 => fulladder:inst.Input1
+B0 => fulladder:inst.Input2
+sum1 <= fulladder:inst1.sum
+A1 => fulladder:inst1.Input1
+B1 => fulladder:inst1.Input2
+carryOUT <= fulladder:inst1.carryout
+
+
+|fulladder2bit|fulladder:inst
+sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+carry => inst4.IN0
+carry => inst1.IN0
+Input1 => inst3.IN0
+Input1 => inst.IN0
+Input2 => inst3.IN1
+Input2 => inst.IN1
+carryout <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|fulladder2bit|fulladder:inst1
+sum <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+carry => inst4.IN0
+carry => inst1.IN0
+Input1 => inst3.IN0
+Input1 => inst.IN0
+Input2 => inst3.IN1
+Input2 => inst.IN1
+carryout <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
