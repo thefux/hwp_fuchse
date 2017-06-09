@@ -1,0 +1,6 @@
+Led(4) <= '1' when (unsigned(analogIn) > 3000 and unsigned(analogIn) < 3500) else '0';
+	Led(3) <= '1' when (unsigned(analogIn) > 2500 and unsigned(analogIn) < 3000) else '0';
+	Led(2) <= '1' when (unsigned(analogIn) > 1700 and unsigned(analogIn) < 2500) else '0';
+	Led(1) <= '1' when (unsigned(analogIn) > 850 and unsigned(analogIn) < 1700) else '0';
+	Led(0) <= '1' when (unsigned(analogIn) > 400 and unsigned(analogIn) < 850) else '0';
+	Led(5) <= '1' when unsigned(analogIn) < 400;
